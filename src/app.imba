@@ -7,6 +7,16 @@ tag App
     @text = "garyxqhqlxfwhswjxhzsrhxdwrxcwhxvrwlrqsfwbvxnqbwvcgawgxvfhpdrcgarfwgcwjrjyrbqsgaxcswjxhzxcwhcqfwhhrdwsrhxdgarfawbwfgrbxcgxfsrwgpbrcqsfwgcawnrrnqhnrdgqcpttqbgwfwbvxnqbqpchxsrcgzhruxgawdwtgwgxqvcsqbwjypcaqbcgwhkxvlwvdcaqbgtpbcpxgapvgxvlgarzawnrlbwfxhrwvdjpcfphwbyqdxrccgbqvlshroxyhrsqbrhxjycwvdbrgbwfgwyhrfhwucsqbaqhdxvltbrzdrvgwhwvdfbwvxwhwdwtgwgxqvcsqbwcgbqvlyxgrwvdqsgrvawnrfawbwfgrbxcgxfcgbxtrdqbctqggrdfqwgtwggrbvcsqbfwjqpshwlrfwgcwbrqyhxlwgrfwbvxnqbrcjrwvxvlgarzwbrdrtrvdrvgqvvpgbxrvgcxvwvxjwhshrcasqbcpbnxnwhwvdyrfwpcrqsgarhwblrtbqtqbgxqvqsjrwgxvgarxbdxrgwbrcqjrgxjrcbrsrbbrdgqwcaztrbfwbvxnqbrcqsgargrbbrcgbxwhswjxhxrcxvgarqbdrbfwbvxnqbwgarzwbrgarcgbxfgrcgfwbvxnqbrchxnxvlfwgcyrhqvlgqguqcpyswjxhxrcgartwvgarbxvwrwvdsrhxvwrgarsqbjrbfqjtbxcrcgaryxlfwgcgargxlrbhxqviwlpwbhrqtwbdcvquhrqtwbdfhqpdrdhrqtwbdwvdcpvdwfhqpdrdhrqtwbdsrhxvwrfqjtbxcrcwhhgarvqvtwvgarbxvrfwgcuaxfabwvlrxvcxersbqjgarcjwhhbpcgzctqggrdfwggqgaryxlfwgcxerdtpjwwvdxvfhpdrccpfadxnrbcrsqbjcwcgarhzvoqfrhqgcrbnwhwvdfarrgwawcurhhwcgardqjrcgxffwggarwvcurbxciwlpwbpvdx"
     @key = {}
 
+  def upload(event)
+    let file = event.native:target:files[0]
+    return unless file
+    let reader = FileReader.new
+
+    reader:onload = do |event|
+      @text = event:target:result
+      Imba.commit
+    reader.read-as-text(file)
+
   def render
     console.log(@key)
     <self>
@@ -16,6 +26,7 @@ tag App
       <h3>
         "Encrypted"
       <textarea[@text]>
+      <input#file type="file" :change.upload>
 
       <h3>
         "Decoded"
