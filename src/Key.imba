@@ -28,4 +28,4 @@ export tag Key
             <td.letter>
               letter
             <td>
-            <input[key[letter]] size=1>
+            <input[key[letter]] maxlength=1 size=1>

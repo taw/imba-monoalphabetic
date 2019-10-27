@@ -28,6 +28,7 @@
   .DecodedLetter {
     display: inline-block;
     font-family: monospace;
+    white-space: pre;
 
     &.known {
       background-color: #8f8;
