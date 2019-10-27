@@ -417,7 +417,8 @@ template {
     font-family: monospace; }
   .App .DecodedLetter {
     display: inline-block;
-    font-family: monospace; }
+    font-family: monospace;
+    white-space: pre; }
     .App .DecodedLetter.known {
       background-color: #8f8; }
     .App .DecodedLetter.unknown {
